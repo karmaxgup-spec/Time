@@ -1,11 +1,11 @@
-// Time Dividers - adds "---9:15 AM---" style headers to the prompt, once per time block.
+// Time Dividers - adds "[Time: 9:15 AM]" style headers to the prompt, once per time block.
 // Only affects the prompt sent to the model. Your saved chat is never modified.
 
 const MODULE = 'time_dividers';
 const defaults = Object.freeze({
     enabled: true,
     intervalMinutes: 15, // a new divider appears when a message lands in a new block of this length
-    includeDate: true,   // show the date too when the day changes: "---Oct 1, 9:15 AM---"
+    includeDate: true,   // show the date too when the day changes: "[Time: Oct 1, 9:15 AM]"
 });
 
 function getSettings() {
@@ -51,7 +51,7 @@ globalThis.timeDividersInterceptor = async function (chat, _contextSize, _abort,
             : m.format(timeFmt);
 
         // Copy the message so the real chat history is untouched
-        chat[i] = { ...msg, mes: `---${label}---\n${msg.mes}` };
+        chat[i] = { ...msg, mes: `[Time: ${label}]\n${msg.mes}` };
 
         lastBlockKey = blockKey;
         lastDay = dayKey;
