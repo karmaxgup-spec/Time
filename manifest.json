@@ -1,0 +1,11 @@
+{
+  "display_name": "Time Dividers",
+  "loading_order": 10,
+  "requires": [],
+  "optional": [],
+  "generate_interceptor": "timeDividersInterceptor",
+  "js": "index.js",
+  "css": "",
+  "author": "you",
+  "version": "1.0.0"
+}
